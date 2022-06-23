@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "e_d/crud.h"
+#include "crud.h"
 
 
 log *primeiro = NULL, *ultimo= NULL;
@@ -13,7 +13,7 @@ void cadastrar_log(char *e_mail,char *senha){
   strcpy(auxiliar->email,e_mail); 
   strcpy(auxiliar->senha,senha);
   auxiliar->prox = NULL;
-  
+
   if (primeiro == NULL) { // fila vazia
     primeiro = auxiliar;
     ultimo = auxiliar;
@@ -30,7 +30,7 @@ int verificar(char *auxiliar_email, char *auxiliar_senha){
   int contador_de_carcteres_senha = 0;
   int tamanho_do_email = strlen(aux_da_lista->email);
   int tamanho_da_senha = strlen(aux_da_lista->senha);
-  
+
   for (int i = 0; i < tamanho_do_email; i++) {
     if (auxiliar_email[i] == aux_da_lista->email[i]) {
       contador_de_carcteres_email++;
@@ -40,8 +40,8 @@ int verificar(char *auxiliar_email, char *auxiliar_senha){
     if (auxiliar_senha[i] == aux_da_lista->senha[i]) {
       contador_de_carcteres_senha++;
     }}
- 
-  
+
+
   if (contador_de_carcteres_email == tamanho_do_email &&
       contador_de_carcteres_senha == tamanho_da_senha) {
     return 1;
@@ -51,8 +51,10 @@ int verificar(char *auxiliar_email, char *auxiliar_senha){
    printf("\nemail ou senha invalido!");
 return 0;
   }
-  
+
 int main() {
+  int c =0;
+ 
   cadastrar_log("evanildo","123");
   cadastrar_log("rafael","345");
   add_abb(10,"evanildo",511236,"li");
@@ -64,12 +66,20 @@ int main() {
   add_abb(14,"gadriel",789,"anjo");
   add_abb(31,"gadriel",789,"anjo");
   
-if(verificar("evanildo","123")){
- delet(29);
-}
-  
-  printf("\n\nin ordem: ");
+ while(c<5){
+  printf("\nin ordem: ");
   imprimir();
+    
+if(verificar("evanildo","123")){
+ int i;
+  printf("\ndigite a posiçao ");
+  scanf("%d",&i);
+  delet(i);
+}
 
+ 
+  prin_fila();
+    c++;
+    }
   return 0;
 }

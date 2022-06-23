@@ -3,7 +3,6 @@
 
 typedef struct Vertice {
 
-  // Dados iniciais da encomenda de um livro
   int id; // identificador
   char nome_aluno[50];
   int matricula;
@@ -15,11 +14,15 @@ typedef struct Vertice {
   // mecanismo p/ unir nos!
   struct Vertice *esq;
   struct Vertice *dir;
+  struct Vertice *prox;
+  
 } VERTICE;
 
 typedef struct log {
+    char nome_responsavel[50];
   char email[50];
   char senha[50];
+  char funcao[20]; 
   struct log *prox;
 } log;
 
@@ -29,4 +32,6 @@ VERTICE *apaga(VERTICE *no_da_arvore, int numero);
 void imprimir();
 void in_ordem(VERTICE *aux);
 void delet(int numero);
+void prin_fila();
+
 #endif
