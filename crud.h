@@ -3,7 +3,8 @@
 
 typedef struct Vertice {
 
-  int id; // identificador
+  // Dados iniciais da encomenda de um livro
+  int id; 
   char nome_aluno[50];
   int matricula;
   char descricao[100];
@@ -15,23 +16,23 @@ typedef struct Vertice {
   struct Vertice *esq;
   struct Vertice *dir;
   struct Vertice *prox;
-  
-} VERTICE;
+}VERTICE;
 
 typedef struct log {
-    char nome_responsavel[50];
-  char email[50];
+  char nome_responsavel[50];
+  char cpf[50];
   char senha[50];
   char funcao[20]; 
   struct log *prox;
 } log;
 
 VERTICE *buscar(int id, VERTICE *aux);
-void add_abb(int id, char *nome_aluno, int matricula, char *descricao);
+void add_abb(VERTICE dados);
 VERTICE *apaga(VERTICE *no_da_arvore, int numero);
 void imprimir();
 void in_ordem(VERTICE *aux);
 void delet(int numero);
-void prin_fila();
-
+int prin_fila();
+void responsavel(char *auxiliar);
+void remover_da_lista();
 #endif

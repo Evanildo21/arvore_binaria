@@ -26,19 +26,19 @@ VERTICE *buscar(int id, VERTICE *aux) {
     return NULL;
   }}
 
-void add_abb(int id, char *nome_aluno, int matricula, char *descricao) {
+void add_abb(VERTICE dados){
 
-  VERTICE *aux = buscar(id, raiz);
+  VERTICE *aux = buscar(dados.id, raiz);
 
-  if (aux != NULL && aux->id == id) {
+  if (aux != NULL && aux->id == dados.id) {
     printf("Insercao invalida!\n");
   } else {
 
     VERTICE *novo = malloc(sizeof(VERTICE));
-    novo->id = id;
-    strcpy(novo->nome_aluno, nome_aluno);
-    novo->matricula = matricula;
-    strcpy(novo->descricao, descricao);
+    novo->id = dados.id;
+    strcpy(novo->nome_aluno, dados.nome_aluno);
+    novo->matricula = dados.matricula;
+    strcpy(novo->descricao, dados.descricao);
     novo->esq = NULL;
     novo->dir = NULL;
 
@@ -46,7 +46,7 @@ void add_abb(int id, char *nome_aluno, int matricula, char *descricao) {
       raiz = novo;
     } else {
 
-      if (id < aux->id) {
+      if (dados.id < aux->id) {
         aux->esq = novo;
       } else {
         aux->dir = novo;
@@ -55,6 +55,15 @@ void add_abb(int id, char *nome_aluno, int matricula, char *descricao) {
   }
 }
 
-void delet(int numero) { apaga(raiz, numero); }
+void delet(int numero) { raiz = apaga(raiz, numero); }
 
-void imprimir() { in_ordem(raiz); }
+void imprimir() {
+  if(raiz== NULL)
+     printf("\nnão a pedidos!\n");
+  else{
+     in_ordem(raiz);
+        int posicao;
+        printf("\ndigite a posiçao ");
+        scanf("%d", &posicao);
+        delet(posicao);}
+  }
