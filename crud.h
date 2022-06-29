@@ -3,7 +3,6 @@
 
 typedef struct Vertice {
 
-  // Dados iniciais da encomenda de um livro
   int id; 
   char nome_aluno[50];
   int matricula;
@@ -12,7 +11,7 @@ typedef struct Vertice {
   char nome_do_campos_com_aluno[50];
   char nome_do_responssavel[100];
   int prioridade_do_pedido;
-  // mecanismo p/ unir nos!
+  
   struct Vertice *esq;
   struct Vertice *dir;
   struct Vertice *prox;
@@ -35,4 +34,7 @@ void delet(int numero);
 int prin_fila();
 void responsavel(char *auxiliar);
 void remover_da_lista();
+void cadastrar_log(log dados);
+void tela_estagiario();
+int verificar(int condicao);
 #endif
